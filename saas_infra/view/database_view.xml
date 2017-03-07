@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+<!-- SEARCH VIEW -->
+<record id="view_saas_infra_database_filter" model="ir.ui.view">
+    <field name="name">saas.infra.database.select</field>
+    <field name="model">saas.infra.database</field>
+    <field name="arch" type="xml">
+        <search string="database">
+            <field name="name"/>
+            <field name="main_hostname"/>
+            <field name="database_type_id"/>
+            <group expand="0" string="Group By...">
+                <filter string="Type" context="{'group_by':'database_type_id'}"/>
+            </group>
+        </search>
+    </field>
+</record>
+
+<!-- FORMVIEW -->
+<record id="view_saas_infra_database_form" model="ir.ui.view">
+    <field name="name">saas.infra.database.form</field>
+    <field name="model">saas.infra.database</field>
+    <field name="arch" type="xml">
+        <form string="database">
+            <field name="id" invisible="1"/>
+            <header>
+                <button name="action_to_draft"
+                    type="object"
+                    states="cancel"
+                    string="to Draft"
+                    />
+                <button name="action_deactivate"
+                    type="object"
+                    states="active"
+                    string="Deactivate"
+                    />
+                <button name="action_activate"
+                    type="object"
+                    states="deactivated,draft,maintenance"
+                    string="to Active"
+                    />
+                <button name="action_cancel"
+                    type="object"
+                    states="active,deactivated,maintenance"
+                    string="Cancel"
+                    />
+                <field name="state" widget="statusbar"
+                    statusbar_colors='{}'
+                    />
+            </header>
+            <sheet string="database">
+                <div class="oe_button_box" name="buttons">
+                    <button icon="fa-sun-o" type="object" string="Create" class="oe_inline oe_stat_button" name="create_db" states="draft"/>
+                    <button icon="fa-trash-o" type="object" string="Drop" class="oe_stat_button" name="drop_db" states="active"/>
+                </div>
+                <div>
+                    <h1>
+                        <field name="name" placeholder="Name..."/>
+                    </h1>
+                </div>
+                 <group>
+                    <group>
+                        <field name="database_type_id" options="{'no_create': True}" />
+                        <field name="main_hostname" widget="url"/>
+                    </group>
+                 </group>
+                <notebook>
+                    <page string="Notes">
+                        <field name="note"/>
+                    </page>
+                </notebook>
+            </sheet>
+            <div class="oe_chatter">
+                <field name="message_follower_ids" widget="mail_followers"/>
+                <field name="message_ids" widget="mail_thread"/>
+            </div>
+        </form>
+    </field>
+</record>
+
+<!-- TREEVIEW -->
+<record id="view_saas_infra_database_tree" model="ir.ui.view">
+    <field name="name">saas.infra.database.tree</field>
+    <field name="model">saas.infra.database</field>
+    <field name="arch" type="xml">
+        <tree string="database"
+            fonts="bold:message_unread==True"
+            >
+            <field name="message_unread" invisible="1"/>
+            <field name="database_type_id"/>
+            <field name="name"/>
+            <field name="main_hostname"/>
+            <field name="state"/>
+        </tree>
+    </field>
+</record>
+
+<!-- KANBAN -->
+<record model="ir.ui.view" id="view_saas_infra_database_kanban">
+    <field name="name">saas.infra.database.kanban</field>
+    <field name="model">saas.infra.database</field>
+    <field name="arch" type="xml">
+        <kanban class="oe_background_grey">
+            <field name="name"/>
+            <field name="main_hostname"/>
+            <field name="state"/>
+            <templates>
+                <t t-name="kanban-box">
+                    <div t-attf-class="oe_kanban_card">
+                        <div class="oe_kanban_content" style="width: 150px; height: 80px; margin: 0 auto;">
+                            <h4 class="text-center"><a type="open"><field name="name"/></a></h4>
+                            <a t-att-href="record.main_hostname.value" target="_blank"><field name="main_hostname"/></a>
+                        </div>
+                        <div class="oe_clear"/> 
+                    </div>
+                </t>
+            </templates>
+        </kanban>
+    </field>
+</record>
+
+<record id="action_saas_infra_database" model="ir.actions.act_window">
+    <field name="name">Databases</field>
+    <field name="res_model">saas.infra.database</field>
+    <field name="view_mode">kanban,tree,form</field>
+</record>
+
+<menuitem
+    id="menu_databases"
+    sequence="5"
+    parent="menu_saas_infra"
+    action="action_saas_infra_database"
+    />
+
+</data>
+</openerp>

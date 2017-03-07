@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_saas_infra_database_manager,saas_infra.database.manager,model_saas_infra_database,group_manager,1,1,1,1
+access_saas_infra_database_user,saas_infra.database.user,model_saas_infra_database,group_user,1,1,1,1
+access_saas_infra_database_type_manager,saas_infra.database_type.manager,model_saas_infra_database_type,group_manager,1,1,1,1
+access_saas_infra_database_type_user,saas_infra.database_type.user,model_saas_infra_database_type,group_user,1,1,1,1
