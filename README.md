@@ -1,4 +1,4 @@
-[![Runbot Status](http://runbot.adhoc.com.ar/runbot/badge/flat/17/9.0.svg)](http://runbot.adhoc.com.ar/runbot/repo/github-com-ingadhoc-saas-17)
+[![Runbot Status](http://runbot.adhoc.com.ar/runbot/badge/flat/5/9.0.svg)](http://runbot.adhoc.com.ar/runbot/repo/github-com-ingadhoc-saas-5)
 [![Build Status](https://travis-ci.org/ingadhoc/saas.svg?branch=9.0)](https://travis-ci.org/ingadhoc/saas)
 [![Coverage Status](https://coveralls.io/repos/ingadhoc/saas/badge.png?branch=9.0)](https://coveralls.io/r/ingadhoc/saas?branch=9.0)
 [![Code Climate](https://codeclimate.com/github/ingadhoc/saas/badges/gpa.svg)](https://codeclimate.com/github/ingadhoc/saas)
