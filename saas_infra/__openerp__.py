@@ -29,14 +29,15 @@
         'mail',
     ],
     'external_dependencies': {
-        'python': ['fabric', 'fabtools', 'erppeek', 'gdapi']
+        'python': ['gdapi']
     },
     'data': [
         'security/infrastructure_group.xml',
         'security/ir.model.access.csv',
-        'view/menu.xml',
-        'view/database_view.xml',
-        'view/database_type_view.xml',
+        'view/saas_infra_menu.xml',
+        'view/saas_infra_database_view.xml',
+        'view/saas_infra_database_type_view.xml',
+        'view/saas_infra_rancher_environment_view.xml',
     ],
     'installable': True,
     'auto_install': False,

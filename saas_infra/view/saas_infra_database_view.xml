@@ -7,7 +7,7 @@
     <field name="name">saas.infra.database.select</field>
     <field name="model">saas.infra.database</field>
     <field name="arch" type="xml">
-        <search string="database">
+        <search string="Database">
             <field name="name"/>
             <field name="main_hostname"/>
             <field name="database_type_id"/>
@@ -23,23 +23,13 @@
     <field name="name">saas.infra.database.form</field>
     <field name="model">saas.infra.database</field>
     <field name="arch" type="xml">
-        <form string="database">
+        <form string="Database">
             <field name="id" invisible="1"/>
             <header>
                 <button name="action_to_draft"
                     type="object"
                     states="cancel"
                     string="to Draft"
-                    />
-                <button name="action_deactivate"
-                    type="object"
-                    states="active"
-                    string="Deactivate"
-                    />
-                <button name="action_activate"
-                    type="object"
-                    states="deactivated,draft,maintenance"
-                    string="to Active"
                     />
                 <button name="action_cancel"
                     type="object"
@@ -50,7 +40,7 @@
                     statusbar_colors='{}'
                     />
             </header>
-            <sheet string="database">
+            <sheet string="Database">
                 <div class="oe_button_box" name="buttons">
                     <button icon="fa-sun-o" type="object" string="Create" class="oe_inline oe_stat_button" name="create_db" states="draft"/>
                     <button icon="fa-trash-o" type="object" string="Drop" class="oe_stat_button" name="drop_db" states="active"/>
@@ -63,6 +53,12 @@
                  <group>
                     <group>
                         <field name="database_type_id" options="{'no_create': True}" />
+                        <label for="domain_prefix"/>
+                        <div class="oe_inline">
+                            <field name="domain_prefix" class="oe_inline"/>
+                            .<field name="database_type_domain" class="oe_inline"/>
+                        </div>
+                        <field name="custom_domain"/>
                         <field name="main_hostname" widget="url"/>
                     </group>
                  </group>
@@ -85,7 +81,7 @@
     <field name="name">saas.infra.database.tree</field>
     <field name="model">saas.infra.database</field>
     <field name="arch" type="xml">
-        <tree string="database"
+        <tree string="Database"
             fonts="bold:message_unread==True"
             >
             <field name="message_unread" invisible="1"/>

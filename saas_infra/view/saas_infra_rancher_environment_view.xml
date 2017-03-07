@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- saas.infra.rancher.environment -->
+<openerp>
+<data>
+
+<!-- SEARCH VIEW -->
+<record id="view_saas_infra_rancher_environment_filter" model="ir.ui.view">
+    <field name="name">saas.infra.rancher.environment.select</field>
+    <field name="model">saas.infra.rancher.environment</field>
+    <field name="arch" type="xml">
+        <search string="Rancher Environment">
+            <field name="name"/>
+        </search>
+    </field>
+</record>
+
+<!-- FORMVIEW -->
+<record id="view_saas_infra_rancher_environment_form" model="ir.ui.view">
+    <field name="name">saas.infra.rancher.environment.form</field>
+    <field name="model">saas.infra.rancher.environment</field>
+    <field name="arch" type="xml">
+        <form string="Rancher Environment">
+            <header>
+            </header>
+            <sheet string="Rancher Environment">
+                <group>
+                    <field name="name"/>
+                    <field name="url" widget="url"/>
+                    <field name="access_key"/>
+                    <field name="secret_key"/>
+                </group>
+            </sheet>
+        </form>
+    </field>
+</record>
+
+<!-- TREEVIEW -->
+<record id="view_saas_infra_rancher_environment_tree" model="ir.ui.view">
+    <field name="name">saas.infra.rancher.environment.tree</field>
+    <field name="model">saas.infra.rancher.environment</field>
+    <field name="arch" type="xml">
+        <tree string="Rancher Environment">
+            <field name="name"/>
+            <field name="url" widget="url"/>
+        </tree>
+    </field>
+</record>
+
+<record id="action_saas_infra_rancher_environment_database_types" model="ir.actions.act_window">
+    <field name="name">Rancher Environments</field>
+    <field name="res_model">saas.infra.rancher.environment</field>
+</record>
+
+<menuitem
+    id="menu_rancher_environment"
+    sequence="100"
+    action="action_saas_infra_rancher_environment_database_types"
+    parent="menu_configuration"
+    />
+
+</data>
+</openerp>
